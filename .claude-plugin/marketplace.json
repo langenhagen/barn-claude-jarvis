@@ -1,0 +1,16 @@
+{
+  "name": "barn-claude-jarvis",
+  "owner": {
+    "name": "Andreas Langenhagen"
+  },
+  "metadata": {
+    "description": "Marketplace for the barn-claude-jarvis plugin, so it installs straight from this repository"
+  },
+  "plugins": [
+    {
+      "name": "barn-claude-jarvis",
+      "source": "./",
+      "description": "Jarvis mode reads Claude's replies aloud with Kokoro; shortmode keeps them terse"
+    }
+  ]
+}
