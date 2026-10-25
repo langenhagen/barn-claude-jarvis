@@ -10,7 +10,7 @@
     {
       "name": "barn-claude-jarvis",
       "source": "./",
-      "description": "Jarvis mode reads Claude's replies aloud with Kokoro; shortmode keeps them terse"
+      "description": "Jarvis mode reads Claude's terse replies aloud with Kokoro; friday mode speaks a terse version of normal replies; shortmode keeps replies terse"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "description": "Jarvis mode and shortmode toggles, and spoken replies",
+  "description": "Jarvis mode, shortmode and friday mode toggles, and spoken replies",
   "hooks": {
     "PreToolUse": [
       {
@@ -28,6 +28,22 @@
             ],
             "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/write-last-message.sh\" && \"${CLAUDE_PLUGIN_ROOT}/scripts/jarvis-speak.sh\"",
             "async": true
+          },
+          {
+            "type": "command",
+            "comment": [
+              "Read ~/.claude/last-jarvis-message.txt aloud in friday mode."
+            ],
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/friday-speak.sh\"",
+            "async": true
+          },
+          {
+            "type": "command",
+            "comment": [
+              "In friday mode, send the model back once if it did not write",
+              "~/.claude/last-jarvis-message.txt."
+            ],
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/friday-stop.sh\""
           }
         ]
       }
@@ -38,9 +54,9 @@
           {
             "type": "command",
             "comment": [
-              "Prompts 'jarvis', 'shortmode' and their 'off' forms switch",
-              "the mode in ~/.claude/barn-claude-jarvis-mode. Injects the",
-              "active mode's reply rule into every prompt."
+              "Prompts 'jarvis', 'shortmode', 'friday' and their 'off' forms",
+              "switch the mode in ~/.claude/barn-claude-jarvis-mode. Injects",
+              "the active mode's reply rule into every prompt."
             ],
             "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/mode-hook.sh\""
           }

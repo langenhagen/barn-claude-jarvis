@@ -1,11 +1,14 @@
 # barn-claude-jarvis
 
-Claude Code plugin with two reply modes, jarvis and shortmode.
+Claude Code plugin with three reply modes, jarvis, shortmode and friday.
 
 - `jarvis` turns Jarvis mode on: replies get terse and Kokoro reads them
   aloud. `jarvis off` turns it off.
 - `shortmode` turns shortmode on: replies get terse, nothing is spoken.
   `shortmode off` turns it off.
+- `friday` turns friday mode on: replies on screen stay normal, Claude also
+  writes a terse spoken version to `~/.claude/last-jarvis-message.txt`, and
+  Kokoro reads that file aloud. `friday off` turns it off.
 
 Only one mode is on at a time. The marker file
 `~/.claude/barn-claude-jarvis-mode` holds the active mode's name; no file means
@@ -20,7 +23,10 @@ no mode.
   permission prompt.
 - `Stop` runs `scripts/write-last-message.sh`, which writes the reply to
   `~/.claude/last-message.txt`, then `scripts/jarvis-speak.sh`, which speaks
-  that file in Jarvis mode.
+  that file in Jarvis mode. Alongside, `scripts/friday-speak.sh` speaks
+  `~/.claude/last-jarvis-message.txt` in friday mode, and
+  `scripts/friday-stop.sh` sends Claude back once if it did not write that
+  file.
 
 ## Requirements
 
