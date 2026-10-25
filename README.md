@@ -51,6 +51,19 @@ claude plugin marketplace add ./
 claude plugin install barn-claude-jarvis@barn-claude-jarvis
 ```
 
+## Development
+
+Installed from a local clone, the hooks run the scripts in the clone, so
+script edits take effect on the next hook run. Claude Code reads
+`hooks/hooks.json` from its cached copy of the plugin, though. After changing
+that file:
+
+1. Bump `version` in `.claude-plugin/plugin.json`.
+2. Run `claude plugin update barn-claude-jarvis@barn-claude-jarvis` for each
+   install, with `--scope user` or `--scope project`.
+3. Start a fresh Claude Code session. `/exit` can leave a background session
+   running with the old hooks; end that process too.
+
 ## License
 
 See [LICENSE](LICENSE) file.
