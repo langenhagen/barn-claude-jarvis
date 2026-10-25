@@ -4,10 +4,10 @@
 #
 # Does nothing unless ~/.cache/barn-claude-jarvis/mode holds "jarvis" (see
 # mode-hook.sh). Speaks ~/.cache/barn-claude-jarvis/last-jarvis-message.txt,
-# which write-last-message.sh writes.
+# which write-jarvis-message.sh writes.
 #
 # Hooks of one event run in parallel, so hooks/hooks.json chains
-# write-last-message.sh and this hook with && to avoid reading the previous
+# write-jarvis-message.sh and this hook with && to avoid reading the previous
 # reply. `kokoro` blocks until
 # playback ends.
 #

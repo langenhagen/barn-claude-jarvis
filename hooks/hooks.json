@@ -29,7 +29,7 @@
               "Chained with && so jarvis-speak.sh reads this turn's reply, not",
               "the previous one."
             ],
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/write-last-message.sh\" && \"${CLAUDE_PLUGIN_ROOT}/scripts/jarvis-speak.sh\"",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/write-jarvis-message.sh\" && \"${CLAUDE_PLUGIN_ROOT}/scripts/jarvis-speak.sh\"",
             "async": true
           },
           {

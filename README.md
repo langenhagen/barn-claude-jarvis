@@ -22,7 +22,7 @@ no mode.
 - `PreToolUse` on `Write` runs `scripts/approve-friday-message-write.sh`,
   which approves writes to `~/.cache/barn-claude-jarvis/last-friday-message.txt`
   without a permission prompt.
-- `Stop` runs `scripts/write-last-message.sh`, which writes the reply to
+- `Stop` runs `scripts/write-jarvis-message.sh`, which writes the reply to
   `~/.cache/barn-claude-jarvis/last-jarvis-message.txt`, then
   `scripts/jarvis-speak.sh`, which speaks that file in Jarvis mode.
   Alongside, `scripts/friday-speak.sh` speaks
