@@ -2,10 +2,9 @@
 # Claude Code Stop hook: read the last reply aloud with Kokoro while jarvis mode
 # is on.
 #
-# Does nothing unless ~/.claude/barn-claude-jarvis-mode holds "jarvis" (see
-# mode-hook.sh).
-# Speaks ~/.claude/last-message.txt, which write-last-message.sh
-# writes.
+# Does nothing unless ~/.cache/barn-claude-jarvis/mode holds "jarvis" (see
+# mode-hook.sh). Speaks ~/.cache/barn-claude-jarvis/last-message.txt,
+# which write-last-message.sh writes.
 #
 # Hooks of one event run in parallel, so hooks/hooks.json chains the two
 # with && to avoid reading the previous reply. `kokoro` blocks until
@@ -15,6 +14,9 @@
 
 set -euo pipefail
 
-grep --quiet --line-regexp --no-messages jarvis "${HOME}/.claude/barn-claude-jarvis-mode" || exit 0
+# shellcheck source=SCRIPTDIR/paths.sh
+source "$(dirname "${BASH_SOURCE[0]}")/paths.sh"
 
-kokoro --speed 1.2 "${HOME}/.claude/last-message.txt"
+grep --quiet --line-regexp --no-messages jarvis "${mode_file}" || exit 0
+
+kokoro --speed 1.2 "${last_message_file}"

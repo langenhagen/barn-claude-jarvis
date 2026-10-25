@@ -11,11 +11,12 @@
 # - jarvis: terse replies, read aloud by jarvis-speak.sh.
 # - shortmode: terse replies, nothing spoken.
 # - friday: normal replies on screen; the model also writes a terse spoken
-#   version to ~/.claude/last-jarvis-message.txt, which friday-speak.sh reads
-#   aloud. This hook deletes that file on every prompt so a stale message is
-#   never spoken, and friday-stop.sh makes the model write it if it forgot.
+#   version to ~/.cache/barn-claude-jarvis/last-jarvis-message.txt, which
+#   friday-speak.sh reads aloud. This hook deletes that file on every prompt so
+#   a stale message is never spoken, and friday-stop.sh makes the
+#   model write it if it forgot.
 #
-# The mode lives in one marker file, ~/.claude/barn-claude-jarvis-mode, which
+# The mode lives in one marker file, ~/.cache/barn-claude-jarvis/mode, which
 # holds the mode's name. No file means no mode. One file keeps the modes
 # mutually exclusive, since their length rules conflict.
 #
@@ -32,8 +33,10 @@
 
 set -euo pipefail
 
-mode_file="${HOME}/.claude/barn-claude-jarvis-mode"
-message_file="${HOME}/.claude/last-jarvis-message.txt"
+# shellcheck source=SCRIPTDIR/paths.sh
+source "$(dirname "${BASH_SOURCE[0]}")/paths.sh"
+
+mkdir -p "${state_dir}"
 
 prompt="$(jq -r '.prompt // empty' | tr -d '[:space:][:punct:]' | tr '[:upper:]' '[:lower:]')"
 mode="$(cat "${mode_file}" 2>/dev/null || true)"
@@ -61,8 +64,8 @@ shortmode)
         'Shortmode is on. Answer in a word, a yes/no, or a fragment of at most about five words, unless asked for more. No explanations, caveats, TL;DR, or follow-up offers. Still do the work behind the answer; only the reply is terse.'
     ;;
 friday)
-    rm -f "${message_file}"
+    rm -f "${friday_message_file}"
     printf '%s\n' \
-        "Friday mode is on. Reply on screen as you normally would. Also, as your last tool call before the final reply text, use the Write tool to write a spoken version of that reply to ${message_file}; Kokoro reads that file aloud. The spoken version is a word, a yes/no, or a fragment of at most about seven words, unless asked for more or really necessary - even then, kokoro-friendly prose always. No explanations, caveats, TL;DR, or follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine."
+        "Friday mode is on. Reply on screen as you normally would. Also, as your last tool call before the final reply text, use the Write tool to write a spoken version of that reply to ${friday_message_file}; Kokoro reads that file aloud. The spoken version is a word, a yes/no, or a fragment of at most about seven words, unless asked for more or really necessary - even then, kokoro-friendly prose always. No explanations, caveats, TL;DR, or follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine."
     ;;
 esac

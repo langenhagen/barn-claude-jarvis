@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Claude Code Stop hook: write everything Claude wrote since the user's last
-# message to ~/.claude/last-message.txt, so jarvis-speak.sh reads the full
-# reply instead of a stale or truncated fragment.
+# message to ~/.cache/barn-claude-jarvis/last-message.txt, so
+# jarvis-speak.sh reads the full reply instead of a stale or truncated
+# fragment.
 #
 # Reads the hook's JSON payload on stdin (has `.transcript_path`), finds the
 # last genuine typed user message, and concatenates every assistant text
@@ -25,7 +26,9 @@
 
 set -euo pipefail
 
-out_file="${HOME}/.claude/last-message.txt"
+# shellcheck source=SCRIPTDIR/paths.sh
+source "$(dirname "${BASH_SOURCE[0]}")/paths.sh"
+
 settle_interval_seconds=0.1
 settle_max_attempts=20
 
@@ -82,9 +85,10 @@ if [ -z "${message}" ]; then
     exit 0
 fi
 
-tmp_file="$(mktemp "${out_file}.XXXXXX")"
+mkdir -p "${state_dir}"
+tmp_file="$(mktemp "${last_message_file}.XXXXXX")"
 trap 'rm -f "${tmp_file}"' EXIT
 
 printf '%s\n' "${message}" >"${tmp_file}"
-mv "${tmp_file}" "${out_file}"
+mv "${tmp_file}" "${last_message_file}"
 trap - EXIT

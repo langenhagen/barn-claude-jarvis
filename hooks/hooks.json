@@ -8,8 +8,9 @@
           {
             "type": "command",
             "comment": [
-              "Approve writes to ~/.claude/last-jarvis-message.txt without",
-              "a permission prompt."
+              "Approve writes to",
+              "~/.cache/barn-claude-jarvis/last-jarvis-message.txt without a",
+              "permission prompt."
             ],
             "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/approve-jarvis-message-write.sh\""
           }
@@ -22,7 +23,8 @@
           {
             "type": "command",
             "comment": [
-              "Write the reply to ~/.claude/last-message.txt, then read it",
+              "Write the reply to",
+              "~/.cache/barn-claude-jarvis/last-message.txt, then read it",
               "aloud with Kokoro in jarvis mode.",
               "Chained with && so those things run in sequence."
             ],
@@ -32,7 +34,8 @@
           {
             "type": "command",
             "comment": [
-              "Read ~/.claude/last-jarvis-message.txt aloud in friday mode."
+              "Read ~/.cache/barn-claude-jarvis/last-jarvis-message.txt aloud",
+              "in friday mode."
             ],
             "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/friday-speak.sh\"",
             "async": true
@@ -41,7 +44,7 @@
             "type": "command",
             "comment": [
               "In friday mode, send the model back once if it did not write",
-              "~/.claude/last-jarvis-message.txt."
+              "~/.cache/barn-claude-jarvis/last-jarvis-message.txt."
             ],
             "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/friday-stop.sh\""
           }
@@ -55,7 +58,7 @@
             "type": "command",
             "comment": [
               "Prompts 'jarvis', 'shortmode', 'friday' and their 'off' forms",
-              "switch the mode in ~/.claude/barn-claude-jarvis-mode. Injects",
+              "switch the mode in ~/.cache/barn-claude-jarvis/mode. Injects",
               "the active mode's reply rule into every prompt."
             ],
             "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/mode-hook.sh\""

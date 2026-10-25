@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code Stop hook: in friday mode, send the model back once if it ended
-# its turn without writing ~/.claude/last-jarvis-message.txt.
+# its turn without writing ~/.cache/barn-claude-jarvis/last-jarvis-message.txt.
 #
 # mode-hook.sh deletes that file on every prompt, so a missing file means the
 # model forgot this turn. Printing `"decision": "block"` keeps the turn going
@@ -15,14 +15,15 @@
 
 set -euo pipefail
 
-grep --quiet --line-regexp --no-messages friday "${HOME}/.claude/barn-claude-jarvis-mode" || exit 0
+# shellcheck source=SCRIPTDIR/paths.sh
+source "$(dirname "${BASH_SOURCE[0]}")/paths.sh"
 
-message_file="${HOME}/.claude/last-jarvis-message.txt"
+grep --quiet --line-regexp --no-messages friday "${mode_file}" || exit 0
 
-[ -f "${message_file}" ] && exit 0
+[ -f "${friday_message_file}" ] && exit 0
 [ "$(jq -r '.stop_hook_active')" = true ] && exit 0
 
-jq -n --arg file "${message_file}" '{
+jq -n --arg file "${friday_message_file}" '{
     decision: "block",
     reason: "Friday mode: write the spoken version of your reply to \($file) with the Write tool, then stop without further text."
 }'
