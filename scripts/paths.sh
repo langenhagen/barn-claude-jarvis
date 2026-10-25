@@ -1,11 +1,6 @@
 # Paths shared by the barn-claude-jarvis hook scripts. Sourced, not run, so a
 # move is a change here only.
 #
-# Everything sits under ~/.cache rather than ~/.claude: Claude Code always asks
-# before the model writes inside a .claude folder, whatever
-# approve-friday-message-write.sh answers, so Friday mode's per-turn write would
-# prompt every time.
-#
 # author: andreasl
 
 # shellcheck shell=bash

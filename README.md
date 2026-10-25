@@ -21,9 +21,7 @@ no mode.
   restates the active mode's rule beside every prompt.
 - `PreToolUse` on `Write` runs `scripts/approve-friday-message-write.sh`,
   which approves writes to `~/.cache/barn-claude-jarvis/last-friday-message.txt`
-  without a permission prompt. The file sits outside `~/.claude` because
-  Claude Code always asks before writes to `.claude` folders, whatever a hook
-  says.
+  without a permission prompt.
 - `Stop` runs `scripts/write-last-message.sh`, which writes the reply to
   `~/.cache/barn-claude-jarvis/last-jarvis-message.txt`, then
   `scripts/jarvis-speak.sh`, which speaks that file in Jarvis mode.
