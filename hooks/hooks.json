@@ -1,6 +1,21 @@
 {
   "description": "Jarvis mode and shortmode toggles, and spoken replies",
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": [
+              "Approve writes to ~/.claude/last-jarvis-message.txt without",
+              "a permission prompt."
+            ],
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/approve-jarvis-message-write.sh\""
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [

@@ -15,6 +15,9 @@ no mode.
 
 - `UserPromptSubmit` runs `scripts/mode-hook.sh`, which switches the mode and
   restates the active mode's rule beside every prompt.
+- `PreToolUse` on `Write` runs `scripts/approve-jarvis-message-write.sh`,
+  which approves writes to `~/.claude/last-jarvis-message.txt` without a
+  permission prompt.
 - `Stop` runs `scripts/write-last-message.sh`, which writes the reply to
   `~/.claude/last-message.txt`, then `scripts/jarvis-speak.sh`, which speaks
   that file in Jarvis mode.
