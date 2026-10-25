@@ -8,7 +8,7 @@
             "type": "command",
             "comment": [
               "Write the reply to ~/.claude/last-message.txt, then read it",
-              "aloud with Kokoro if ~/.claude/jarvis exists.",
+              "aloud with Kokoro in jarvis mode.",
               "Chained with && so those things run in sequence."
             ],
             "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/write-last-message.sh\" && \"${CLAUDE_PLUGIN_ROOT}/scripts/jarvis-speak.sh\"",
@@ -23,20 +23,11 @@
           {
             "type": "command",
             "comment": [
-              "Prompt 'shortmode' or 'shortmode off' toggles",
-              "~/.claude/shortmode. While on, injects the terse-reply rule",
-              "into every prompt."
+              "Prompts 'jarvis', 'shortmode' and their 'off' forms switch",
+              "the mode in ~/.claude/barn-claude-jarvis-mode. Injects the",
+              "active mode's reply rule into every prompt."
             ],
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/shortmode-hook.sh\""
-          },
-          {
-            "type": "command",
-            "comment": [
-              "Prompt 'jarvis' or 'jarvis off' toggles ~/.claude/jarvis.",
-              "While on, injects the terse spoken-reply rule into every",
-              "prompt."
-            ],
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/jarvis-hook.sh\""
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/mode-hook.sh\""
           }
         ]
       }

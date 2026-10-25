@@ -7,14 +7,14 @@ Claude Code plugin with two reply modes, jarvis and shortmode.
 - `shortmode` turns shortmode on: replies get terse, nothing is spoken.
   `shortmode off` turns it off.
 
-Only one mode is on at a time. Each mode is a marker file, `~/.claude/jarvis`
-or `~/.claude/shortmode`.
+Only one mode is on at a time. The marker file
+`~/.claude/barn-claude-jarvis-mode` holds the active mode's name; no file means
+no mode.
 
 ## Hooks
 
-- `UserPromptSubmit` runs `scripts/shortmode-hook.sh` and
-  `scripts/jarvis-hook.sh`, which flip the modes and restate the terse rule
-  beside every prompt.
+- `UserPromptSubmit` runs `scripts/mode-hook.sh`, which switches the mode and
+  restates the active mode's rule beside every prompt.
 - `Stop` runs `scripts/write-last-message.sh`, which writes the reply to
   `~/.claude/last-message.txt`, then `scripts/jarvis-speak.sh`, which speaks
   that file in Jarvis mode.
