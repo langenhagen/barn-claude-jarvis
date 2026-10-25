@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Claude Code Stop hook: read the last reply aloud with Kokoro while jarvis mode
+# Claude Code Stop hook: read the last reply aloud with Kokoro while Jarvis mode
 # is on.
 #
 # Does nothing unless ~/.cache/barn-claude-jarvis/mode holds "jarvis" (see

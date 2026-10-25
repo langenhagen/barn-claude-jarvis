@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Claude Code Stop hook: in friday mode, read
+# Claude Code Stop hook: in Friday mode, read
 # ~/.cache/barn-claude-jarvis/last-friday-message.txt aloud with Kokoro.
 #
 # The model writes that file during its turn (see mode-hook.sh), so it is

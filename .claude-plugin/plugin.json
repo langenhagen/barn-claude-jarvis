@@ -1,7 +1,7 @@
 {
   "name": "barn-claude-jarvis",
   "version": "0.2.0",
-  "description": "Jarvis mode reads Claude's terse replies aloud with Kokoro; friday mode speaks a terse version of normal replies; shortmode keeps replies terse",
+  "description": "Jarvis mode reads Claude's terse replies aloud with Kokoro; Friday mode speaks a terse version of normal replies; shortmode keeps replies terse",
   "author": {
     "name": "Andreas Langenhagen",
     "email": "andreas@langenhagen.cc"

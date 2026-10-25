@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Claude Code Stop hook: in friday mode, send the model back once if it ended
+# Claude Code Stop hook: in Friday mode, send the model back once if it ended
 # its turn without writing ~/.cache/barn-claude-jarvis/last-friday-message.txt.
 #
 # mode-hook.sh deletes that file on every prompt, so a missing file means the
