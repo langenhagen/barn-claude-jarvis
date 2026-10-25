@@ -86,9 +86,4 @@ if [ -z "${message}" ]; then
 fi
 
 mkdir -p "${state_dir}"
-tmp_file="$(mktemp "${jarvis_message_file}.XXXXXX")"
-trap 'rm -f "${tmp_file}"' EXIT
-
-printf '%s\n' "${message}" >"${tmp_file}"
-mv "${tmp_file}" "${jarvis_message_file}"
-trap - EXIT
+printf '%s\n' "${message}" >"${jarvis_message_file}"
