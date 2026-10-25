@@ -3,8 +3,9 @@
 # ~/.cache/barn-claude-jarvis/last-friday-message.txt aloud with Kokoro.
 #
 # The model writes that file during its turn (see mode-hook.sh), so it is
-# complete when the turn stops and there is no transcript to wait for, unlike
-# jarvis-speak.sh. A missing file means the model forgot it;
+# complete when the turn stops. Unlike Jarvis mode, where
+# write-jarvis-message.sh waits for the transcript, there is nothing to wait
+# for. A missing file means the model forgot it;
 # ensure-friday-message.sh then sends the model back, and this hook speaks on
 # the next stop. `kokoro` blocks until playback ends.
 #

@@ -1,6 +1,6 @@
 # barn-claude-jarvis
 
-Claude Code plugin with three reply modes, jarvis, shortmode and friday.
+Claude Code plugin with three reply modes: jarvis, shortmode and friday.
 
 - `jarvis` turns Jarvis mode on: replies get terse and Kokoro reads them
   aloud. `jarvis off` turns it off.

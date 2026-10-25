@@ -8,8 +8,7 @@
 #
 # Hooks of one event run in parallel, so hooks/hooks.json chains
 # write-jarvis-message.sh and this hook with && to avoid reading the previous
-# reply. `kokoro` blocks until
-# playback ends.
+# reply. `kokoro` blocks until playback ends.
 #
 # author: andreasl
 
