@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code PreToolUse hook: let the model write
-# ~/.cache/barn-claude-jarvis/last-jarvis-message.txt without a permission
+# ~/.cache/barn-claude-jarvis/last-friday-message.txt without a permission
 # prompt.
 #
 # The model writes that file itself, every turn, so a prompt for each write

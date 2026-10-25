@@ -3,7 +3,7 @@
 # is on.
 #
 # Does nothing unless ~/.cache/barn-claude-jarvis/mode holds "jarvis" (see
-# mode-hook.sh). Speaks ~/.cache/barn-claude-jarvis/last-message.txt,
+# mode-hook.sh). Speaks ~/.cache/barn-claude-jarvis/last-jarvis-message.txt,
 # which write-last-message.sh writes.
 #
 # Hooks of one event run in parallel, so hooks/hooks.json chains the two
@@ -19,4 +19,4 @@ source "$(dirname "${BASH_SOURCE[0]}")/paths.sh"
 
 grep --quiet --line-regexp --no-messages jarvis "${mode_file}" || exit 0
 
-kokoro --speed 1.2 "${last_message_file}"
+kokoro --speed 1.2 "${jarvis_message_file}"

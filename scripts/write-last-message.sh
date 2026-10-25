@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code Stop hook: write everything Claude wrote since the user's last
-# message to ~/.cache/barn-claude-jarvis/last-message.txt, so
+# message to ~/.cache/barn-claude-jarvis/last-jarvis-message.txt, so
 # jarvis-speak.sh reads the full reply instead of a stale or truncated
 # fragment.
 #
@@ -86,9 +86,9 @@ if [ -z "${message}" ]; then
 fi
 
 mkdir -p "${state_dir}"
-tmp_file="$(mktemp "${last_message_file}.XXXXXX")"
+tmp_file="$(mktemp "${jarvis_message_file}.XXXXXX")"
 trap 'rm -f "${tmp_file}"' EXIT
 
 printf '%s\n' "${message}" >"${tmp_file}"
-mv "${tmp_file}" "${last_message_file}"
+mv "${tmp_file}" "${jarvis_message_file}"
 trap - EXIT

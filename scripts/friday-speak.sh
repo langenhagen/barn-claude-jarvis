@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Claude Code Stop hook: in friday mode, read
-# ~/.cache/barn-claude-jarvis/last-jarvis-message.txt aloud with Kokoro.
+# ~/.cache/barn-claude-jarvis/last-friday-message.txt aloud with Kokoro.
 #
 # The model writes that file during its turn (see mode-hook.sh), so it is
 # complete when the turn stops and there is no transcript to wait for, unlike
 # jarvis-speak.sh. A missing file means the model forgot it;
-# friday-stop.sh then sends the model back, and this hook speaks on
+# ensure-friday-message.sh then sends the model back, and this hook speaks on
 # the next stop. `kokoro` blocks until playback ends.
 #
 # author: andreasl

@@ -9,10 +9,10 @@
             "type": "command",
             "comment": [
               "Approve writes to",
-              "~/.cache/barn-claude-jarvis/last-jarvis-message.txt without a",
+              "~/.cache/barn-claude-jarvis/last-friday-message.txt without a",
               "permission prompt."
             ],
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/approve-jarvis-message-write.sh\""
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/approve-friday-message-write.sh\""
           }
         ]
       }
@@ -24,7 +24,7 @@
             "type": "command",
             "comment": [
               "Write the reply to",
-              "~/.cache/barn-claude-jarvis/last-message.txt, then read it",
+              "~/.cache/barn-claude-jarvis/last-jarvis-message.txt, then read it",
               "aloud with Kokoro in jarvis mode.",
               "Chained with && so those things run in sequence."
             ],
@@ -34,7 +34,7 @@
           {
             "type": "command",
             "comment": [
-              "Read ~/.cache/barn-claude-jarvis/last-jarvis-message.txt aloud",
+              "Read ~/.cache/barn-claude-jarvis/last-friday-message.txt aloud",
               "in friday mode."
             ],
             "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/friday-speak.sh\"",
@@ -44,9 +44,9 @@
             "type": "command",
             "comment": [
               "In friday mode, send the model back once if it did not write",
-              "~/.cache/barn-claude-jarvis/last-jarvis-message.txt."
+              "~/.cache/barn-claude-jarvis/last-friday-message.txt."
             ],
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/friday-stop.sh\""
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/ensure-friday-message.sh\""
           }
         ]
       }

@@ -3,7 +3,7 @@
 #
 # Everything sits under ~/.cache rather than ~/.claude: Claude Code always asks
 # before the model writes inside a .claude folder, whatever
-# approve-jarvis-message-write.sh answers, so Friday mode's per-turn write would
+# approve-friday-message-write.sh answers, so Friday mode's per-turn write would
 # prompt every time.
 #
 # author: andreasl
@@ -17,7 +17,7 @@ state_dir="${HOME}/.cache/barn-claude-jarvis"
 mode_file="${state_dir}/mode"
 
 # Jarvis mode: the full reply, written by write-last-message.sh.
-last_message_file="${state_dir}/last-message.txt"
+jarvis_message_file="${state_dir}/last-jarvis-message.txt"
 
 # Friday mode: the terse spoken version, written by the model itself.
-friday_message_file="${state_dir}/last-jarvis-message.txt"
+friday_message_file="${state_dir}/last-friday-message.txt"

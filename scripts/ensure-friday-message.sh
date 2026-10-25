@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code Stop hook: in friday mode, send the model back once if it ended
-# its turn without writing ~/.cache/barn-claude-jarvis/last-jarvis-message.txt.
+# its turn without writing ~/.cache/barn-claude-jarvis/last-friday-message.txt.
 #
 # mode-hook.sh deletes that file on every prompt, so a missing file means the
 # model forgot this turn. Printing `"decision": "block"` keeps the turn going
