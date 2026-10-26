@@ -10,8 +10,9 @@
 # Modes:
 # - jarvis: terse replies, read aloud by jarvis-speak.sh.
 # - shortmode: terse replies, nothing spoken.
-# - friday: normal replies on screen; the model also writes a terse spoken
-#   version to ~/.cache/barn-claude-jarvis/last-friday-message.txt, which
+# - friday: normal replies on screen; the model also writes a short spoken
+#   version that makes sense on its own to
+#   ~/.cache/barn-claude-jarvis/last-friday-message.txt, which
 #   friday-speak.sh reads aloud. This hook deletes that file on every prompt so
 #   a stale message is never spoken, and ensure-friday-message.sh makes the
 #   model write it if it forgot.

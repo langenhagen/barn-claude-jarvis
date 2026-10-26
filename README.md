@@ -7,7 +7,7 @@ Claude Code plugin with three reply modes: jarvis, shortmode and friday.
 - `shortmode` turns shortmode on: replies get terse, nothing is spoken.
   `shortmode off` turns it off.
 - `friday` turns Friday mode on: replies on screen stay normal, Claude also
-  writes a terse spoken version to
+  writes a short spoken version that makes sense without the screen to
   `~/.cache/barn-claude-jarvis/last-friday-message.txt`, and Kokoro reads that
   file aloud. `friday off` turns it off.
 

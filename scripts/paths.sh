@@ -14,5 +14,5 @@ mode_file="${state_dir}/mode"
 # Jarvis mode: the full reply, written by write-jarvis-message.sh.
 jarvis_message_file="${state_dir}/last-jarvis-message.txt"
 
-# Friday mode: the terse spoken version, written by the model itself.
+# Friday mode: the short spoken version, written by the model itself.
 friday_message_file="${state_dir}/last-friday-message.txt"
