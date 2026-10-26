@@ -66,6 +66,6 @@ shortmode)
 friday)
     rm -f "${friday_message_file}"
     printf '%s\n' \
-        "Friday mode is on. Reply on screen as you normally would. Also, as your last tool call before the final reply text, use the Write tool to write a spoken version of that reply to ${friday_message_file}; Kokoro reads that file aloud. The spoken version is a word, a yes/no, or a fragment of at most about seven words, unless asked for more or really necessary - even then, kokoro-friendly prose always. No explanations, caveats, TL;DR, or follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine."
+        "Friday mode is on. Reply on screen as you normally would. Also, as your last tool call before the final reply text, use the Write tool to write a spoken version of that reply to ${friday_message_file}; Kokoro reads that file aloud. The listener hears the spoken version without seeing the screen, so it must make sense on its own: a yes/no or one or two or a few short sentences of kokoro-friendly prose that name what they refer to (which skill, which line, which PR, and what it does), never 'the draft', 'one line' or 'that fix' alone. Explanations and caveats only when truly necessary, no TL;DR, no follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine."
     ;;
 esac
