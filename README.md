@@ -2,8 +2,9 @@
 
 Claude Code plugin with three reply modes: jarvis, shortmode and friday.
 
-- `jarvis` turns Jarvis mode on: replies get terse and Kokoro reads them
-  aloud. `jarvis off` turns it off.
+- `jarvis` turns Jarvis mode on: replies get terse and Kokoro, through the
+  `kokoro` script from [kokoserv](https://github.com/langenhagen/kokoserv),
+  reads them aloud. `jarvis off` turns it off.
 - `shortmode` turns shortmode on: replies get terse, nothing is spoken.
   `shortmode off` turns it off.
 - `friday` turns Friday mode on: replies on screen stay normal, Claude also
