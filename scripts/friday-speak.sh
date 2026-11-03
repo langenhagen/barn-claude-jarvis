@@ -20,4 +20,4 @@ grep --quiet --line-regexp --no-messages friday "${mode_file}" || exit 0
 
 [ -f "${friday_message_file}" ] || exit 0
 
-kokoro --speed 1.2 "${friday_message_file}"
+kokoro --speed 1.2 --voice am_echo "${friday_message_file}"

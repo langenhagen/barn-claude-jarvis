@@ -19,4 +19,4 @@ source "$(dirname "${BASH_SOURCE[0]}")/paths.sh"
 
 grep --quiet --line-regexp --no-messages jarvis "${mode_file}" || exit 0
 
-kokoro --speed 1.2 "${jarvis_message_file}"
+kokoro --speed 1.2 --voice am_echo "${jarvis_message_file}"
