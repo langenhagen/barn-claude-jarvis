@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Claude Code Stop hook: read the last reply aloud with Kokoro while Jarvis mode
-# is on.
+# Claude Code Stop hook: read the last reply aloud while Jarvis mode is on.
 #
 # Does nothing unless ~/.cache/barn-claude-jarvis/mode holds "jarvis" (see
 # mode-hook.sh). Speaks ~/.cache/barn-claude-jarvis/last-jarvis-message.txt,
@@ -8,7 +7,7 @@
 #
 # Hooks of one event run in parallel, so hooks/hooks.json chains
 # write-jarvis-message.sh and this hook with && to avoid reading the previous
-# reply. `kokoro` blocks until playback ends.
+# reply. `qtts` blocks until playback ends.
 #
 # author: andreasl
 
@@ -19,4 +18,4 @@ source "$(dirname "${BASH_SOURCE[0]}")/paths.sh"
 
 grep --quiet --line-regexp --no-messages jarvis "${mode_file}" || exit 0
 
-kokoro --speed 1.2 --voice am_echo "${jarvis_message_file}"
+qtts --voice "${qtts_voice_file}" --transcript "${qtts_transcript_file}" "${jarvis_message_file}"

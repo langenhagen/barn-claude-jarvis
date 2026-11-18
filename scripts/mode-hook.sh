@@ -58,7 +58,7 @@ esac
 case "${mode}" in
 jarvis)
     printf '%s\n' \
-        'Jarvis mode is on; your reply is read aloud. Answer in a word, a yes/no, or a fragment of at most about seven words, unless asked for more or really necessary - even then, answer in kokoro-friendly prose always. No explanations, caveats, TL;DR, or follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine. Still do the work behind the answer; only the reply is terse.'
+        'Jarvis mode is on; your reply is read aloud. Answer in a word, a yes/no, or a fragment of at most about seven words, unless asked for more or really necessary - even then, answer in qtts-friendly prose always. No explanations, caveats, TL;DR, or follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine. Still do the work behind the answer; only the reply is terse.'
     ;;
 shortmode)
     printf '%s\n' \
@@ -67,6 +67,6 @@ shortmode)
 friday)
     rm -f "${friday_message_file}"
     printf '%s\n' \
-        "Friday mode is on. Reply on screen as you normally would. Also, as your last tool call before the final reply text, use the Write tool to write a spoken version of that reply to ${friday_message_file}; Kokoro reads that file aloud. The listener hears the spoken version without seeing the screen, so it must make sense on its own, and it must be shorter than the on-screen reply: a yes/no, or one to three short sentences of at most about 15 words each. After drafting it, cut about a sixth: drop every clause, number and aside the listener can do without. Use kokoro-friendly prose that names what it refers to (which skill, which line, which PR, and what it does), never 'the draft', 'one line' or 'that fix' alone. Explanations and caveats only when truly necessary, no TL;DR, no follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine."
+        "Friday mode is on. Reply on screen as you normally would. Also, as your last tool call before the final reply text, use the Write tool to write a spoken version of that reply to ${friday_message_file}; Qwen3-TTS reads that file aloud. The listener hears the spoken version without seeing the screen, so it must make sense on its own, and it must be shorter than the on-screen reply: a yes/no, or one to three short sentences of at most about 15 words each. After drafting it, cut about a sixth: drop every clause, number and aside the listener can do without. Use qtts-friendly prose that names what it refers to (which skill, which line, which PR, and what it does), never 'the draft', 'one line' or 'that fix' alone. Explanations and caveats only when truly necessary, no TL;DR, no follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine."
     ;;
 esac

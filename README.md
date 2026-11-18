@@ -2,15 +2,15 @@
 
 Claude Code plugin with three reply modes: jarvis, shortmode and friday.
 
-- `jarvis` turns Jarvis mode on: replies get terse and Kokoro, through the
-  `kokoro` script from [kokoserv](https://github.com/langenhagen/kokoserv),
+- `jarvis` turns Jarvis mode on: replies get terse and Qwen3-TTS, through the
+  `qtts` script from [qttsserv](https://github.com/langenhagen/qttsserv),
   reads them aloud. `jarvis off` turns it off.
 - `shortmode` turns shortmode on: replies get terse, nothing is spoken.
   `shortmode off` turns it off.
 - `friday` turns Friday mode on: replies on screen stay normal, Claude also
   writes a short spoken version that makes sense without the screen to
-  `~/.cache/barn-claude-jarvis/last-friday-message.txt`, and Kokoro reads that
-  file aloud. `friday off` turns it off.
+  `~/.cache/barn-claude-jarvis/last-friday-message.txt`, and Qwen3-TTS reads
+  that file aloud. `friday off` turns it off.
 
 Only one mode is on at a time. The marker file
 `~/.cache/barn-claude-jarvis/mode` holds the active mode's name; no file means
@@ -43,7 +43,7 @@ All hook scripts take their file paths from
 ## Requirements
 
 - [`jq`](https://jqlang.org)
-- `kokoro` on `PATH`, from [kokoserv](https://github.com/langenhagen/kokoserv)
+- `qtts` on `PATH`, from [qttsserv](https://github.com/langenhagen/qttsserv)
 
 ## Install
 

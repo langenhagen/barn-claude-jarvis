@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code PostToolUse hook: in Friday mode, read
-# ~/.cache/barn-claude-jarvis/last-friday-message.txt aloud with Kokoro.
+# ~/.cache/barn-claude-jarvis/last-friday-message.txt aloud.
 #
 # The model writes that file during its turn (see mode-hook.sh), so speech
 # starts right after that Write, before the on-screen reply finishes. Unlike
@@ -8,7 +8,7 @@
 # is nothing to wait for. hooks/hooks.json runs this hook for the Write tool
 # only; any other path is ignored. A missing file means the model forgot it;
 # ensure-friday-message.sh then sends the model back, and the retry's Write
-# triggers this hook. `kokoro` blocks until playback ends.
+# triggers this hook. `qtts` blocks until playback ends.
 #
 # Reads the hook's JSON payload on stdin (`.tool_input.file_path` holds the
 # absolute target path).
@@ -26,4 +26,4 @@ file_path="$(jq -r '.tool_input.file_path // empty')"
 
 grep --quiet --line-regexp --no-messages friday "${mode_file}" || exit 0
 
-kokoro --speed 1.2 --voice am_echo "${friday_message_file}"
+qtts --voice "${qtts_voice_file}" --transcript "${qtts_transcript_file}" "${friday_message_file}"

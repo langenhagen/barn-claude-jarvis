@@ -41,7 +41,7 @@
             "comment": [
               "Write the reply to",
               "~/.cache/barn-claude-jarvis/last-jarvis-message.txt, then read it",
-              "aloud with Kokoro in Jarvis mode.",
+              "aloud with Qwen3-TTS in Jarvis mode.",
               "Chained with && so jarvis-speak.sh reads this turn's reply, not",
               "the previous one."
             ],
