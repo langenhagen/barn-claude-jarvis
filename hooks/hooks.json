@@ -17,6 +17,22 @@
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": [
+              "Read ~/.cache/barn-claude-jarvis/last-friday-message.txt aloud",
+              "in Friday mode, as soon as the model has written it."
+            ],
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/friday-speak.sh\"",
+            "async": true
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "hooks": [
@@ -30,15 +46,6 @@
               "the previous one."
             ],
             "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/write-jarvis-message.sh\" && \"${CLAUDE_PLUGIN_ROOT}/scripts/jarvis-speak.sh\"",
-            "async": true
-          },
-          {
-            "type": "command",
-            "comment": [
-              "Read ~/.cache/barn-claude-jarvis/last-friday-message.txt aloud",
-              "in Friday mode."
-            ],
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/friday-speak.sh\"",
             "async": true
           },
           {

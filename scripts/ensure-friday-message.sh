@@ -9,7 +9,7 @@
 # it end, so a model that keeps forgetting cannot loop.
 #
 # Runs synchronously, since only a synchronous hook can block. friday-speak.sh
-# runs alongside and speaks the file once it exists.
+# speaks the file on the PostToolUse of its Write.
 #
 # author: andreasl
 

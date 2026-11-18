@@ -25,15 +25,17 @@ no mode.
   [`scripts/approve-friday-message-write.sh`](scripts/approve-friday-message-write.sh),
   which approves writes to `~/.cache/barn-claude-jarvis/last-friday-message.txt`
   without a permission prompt.
+- `PostToolUse` on `Write` runs
+  [`scripts/friday-speak.sh`](scripts/friday-speak.sh), which speaks
+  `~/.cache/barn-claude-jarvis/last-friday-message.txt` in Friday mode right
+  after Claude writes it.
 - `Stop` runs
   [`scripts/write-jarvis-message.sh`](scripts/write-jarvis-message.sh), which
   writes the reply to `~/.cache/barn-claude-jarvis/last-jarvis-message.txt`,
   then [`scripts/jarvis-speak.sh`](scripts/jarvis-speak.sh), which speaks that
   file in Jarvis mode. Alongside,
-  [`scripts/friday-speak.sh`](scripts/friday-speak.sh) speaks
-  `~/.cache/barn-claude-jarvis/last-friday-message.txt` in Friday mode, and
   [`scripts/ensure-friday-message.sh`](scripts/ensure-friday-message.sh) sends
-  Claude back once if it did not write that file.
+  Claude back once if it did not write the Friday file.
 
 All hook scripts take their file paths from
 [`scripts/paths.sh`](scripts/paths.sh).
