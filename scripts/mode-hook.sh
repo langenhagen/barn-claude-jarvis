@@ -63,12 +63,12 @@ jarvisoff | shortmodeoff | fridayoff)
     ;;
 esac
 
-voice_note="voice and --prebuffer come from ${paths_file} (voice_name, qtts_prebuffer_seconds; jeff is the default voice, other voices live as subdirectories of ${voices_dir}). Asked to switch voice or change prebuffer, edit that file. Any request naming audio as where something should go -- send/give/put/read/speak X to/on/out to audio, whatever X is: a poem, a longer or shorter message, anything -- means write that content"
+voice_note="Voice (voice_name) and --prebuffer (qtts_prebuffer_seconds) live in ${paths_file} -- other voices under ${voices_dir}; edit to change either. Any 'send/speak/read X to audio' request means writing X"
 
 case "${mode}" in
 jarvis)
     printf '%s\n' \
-        "Jarvis mode is on; your reply is read aloud. Answer in a word, a yes/no, or a fragment of at most about seven words, unless asked for more or really necessary - even then, answer in qtts-friendly prose always. No explanations, caveats, TL;DR, or follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine. Still do the work behind the answer; only the reply is terse. ${voice_note} to ${jarvis_message_file} with the Write tool."
+        "Jarvis mode: your reply is read aloud. Answer in a word, yes/no, or at most ~7 words, unless asked for more or truly necessary -- even then, keep it TTS-friendly prose. No explanations, caveats, TL;DR, or follow-ups. Name specifics (which things), not counts or vague refs; brief paraphrases are fine. Do the full work regardless; only the reply is terse. ${voice_note} to ${jarvis_message_file} with the Write tool."
     ;;
 shortmode)
     printf '%s\n' \
@@ -77,6 +77,6 @@ shortmode)
 friday)
     rm -f "${friday_message_file}"
     printf '%s\n' \
-        "Friday mode is on. Reply on screen as you normally would. Also, as your last tool call before the final reply text, use the Write tool to write a spoken version of that reply to ${friday_message_file}; TTS reads that file aloud. The listener hears the spoken version without seeing the screen, so it must make sense on its own, and it must be shorter than the on-screen reply: a yes/no, or one to three short sentences of at most about 15 words each. After drafting it, cut about a sixth: drop every clause, number and aside the listener can do without. Use qtts-friendly prose that names what it refers to (which skill, which line, which PR, and what it does), never 'the draft', 'one line' or 'that fix' alone. Explanations and caveats only when truly necessary, no TL;DR, no follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine. ${voice_note} to ${friday_message_file} instead of the usual short spoken version."
+        "Friday mode: your on-screen reply stays full, detailed and normal -- this mode adds nothing there. Separately, as your last tool call before the final reply text, use the Write tool to write a short, standalone spoken version to ${friday_message_file} -- TTS reads it aloud. That spoken version must make sense without seeing the screen and be shorter than the on-screen reply: a yes/no, or 1-3 sentences of ~15 words each. Draft it, then cut about a sixth -- drop every clause, number and aside the listener doesn't need. Use TTS-friendly prose naming things concretely (which skill, line, PR, and what it does), never vague refs like 'the draft', 'one line' or 'that fix'; brief paraphrases are fine. In that spoken file only: explanations/caveats when truly necessary, no TL;DR, no follow-ups. ${voice_note} to ${friday_message_file} instead of the usual short spoken version."
     ;;
 esac

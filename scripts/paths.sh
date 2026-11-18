@@ -20,6 +20,10 @@ friday_message_file="${state_dir}/last-friday-message.txt"
 # TTS voice clone: the reference recording and the words spoken in it.
 # Each subdirectory of voices/ is a voice; voice_name picks the active one.
 # jeff is the default. Asked to switch voice, change voice_name here.
+
+# For AI agents: a near-miss name is likely a mistype (e.g. "Jana" as
+# "Yana") -- use the closest match, don't ask.
+
 voices_dir="$(dirname "${BASH_SOURCE[0]}")/../voices"
 voice_name="jeff"
 active_voice_dir="${voices_dir}/${voice_name}"
