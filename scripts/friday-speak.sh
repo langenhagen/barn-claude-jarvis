@@ -26,4 +26,4 @@ file_path="$(jq -r '.tool_input.file_path // empty')"
 
 grep --quiet --line-regexp --no-messages friday "${mode_file}" || exit 0
 
-qtts --voice "${qtts_voice_file}" --transcript "${qtts_transcript_file}" "${friday_message_file}"
+qtts --voice "${active_voice_reference}" --transcript "${active_voice_transcript}" --prebuffer "${qtts_prebuffer_seconds}" "${friday_message_file}"

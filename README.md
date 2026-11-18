@@ -2,19 +2,25 @@
 
 Claude Code plugin with three reply modes: jarvis, shortmode and friday.
 
-- `jarvis` turns Jarvis mode on: replies get terse and Qwen3-TTS, through the
+- `jarvis` turns Jarvis mode on: replies get terse and TTS, through the
   `qtts` script from [qttsserv](https://github.com/langenhagen/qttsserv),
   reads them aloud. `jarvis off` turns it off.
 - `shortmode` turns shortmode on: replies get terse, nothing is spoken.
   `shortmode off` turns it off.
 - `friday` turns Friday mode on: replies on screen stay normal, Claude also
   writes a short spoken version that makes sense without the screen to
-  `~/.cache/barn-claude-jarvis/last-friday-message.txt`, and Qwen3-TTS reads
+  `~/.cache/barn-claude-jarvis/last-friday-message.txt`, and TTS reads
   that file aloud. `friday off` turns it off.
 
 Only one mode is on at a time. The marker file
 `~/.cache/barn-claude-jarvis/mode` holds the active mode's name; no file means
 no mode.
+
+In jarvis and friday mode, Claude also knows it can switch the cloned voice
+or change how much `qtts` prebuffers before it starts playing, and that any
+request naming audio as the destination ("send a longer text to audio",
+"give me a poem on audio", ...) means writing that content straight to the
+mode's message file instead of just replying on screen.
 
 ## Hooks
 

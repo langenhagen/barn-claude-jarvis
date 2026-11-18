@@ -1,0 +1,1 @@
+Agile development focuses on iterative progress, continuous feedback, and close collaboration between developers, product owners, and stakeholders. Instead of delivering a complete application after several months or years, teams divide the project into smaller increments. These increments are implemented, tested, and reviewed regularly.

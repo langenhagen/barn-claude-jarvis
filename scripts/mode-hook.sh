@@ -21,6 +21,11 @@
 # holds the mode's name. No file means no mode. One file keeps the modes
 # mutually exclusive, since their length rules conflict.
 #
+# In jarvis and friday mode, the rule also points the model at paths.sh for
+# the TTS voice and --prebuffer setting, and defines any request naming
+# audio as the destination as writing that content straight to the mode's
+# message file.
+#
 # The user's own words flip it: a prompt of "jarvis", "shortmode" or "friday"
 # turns that mode on, the same word plus "off" turns it off if it is the active
 # mode. Whitespace and punctuation are stripped and case ignored, so a dictated
@@ -34,8 +39,11 @@
 
 set -euo pipefail
 
+script_dir="$(dirname "${BASH_SOURCE[0]}")"
+paths_file="${script_dir}/paths.sh"
+
 # shellcheck source=SCRIPTDIR/paths.sh
-source "$(dirname "${BASH_SOURCE[0]}")/paths.sh"
+source "${paths_file}"
 
 mkdir -p "${state_dir}"
 
@@ -55,10 +63,12 @@ jarvisoff | shortmodeoff | fridayoff)
     ;;
 esac
 
+voice_note="voice and --prebuffer come from ${paths_file} (voice_name, qtts_prebuffer_seconds; jeff is the default voice, other voices live as subdirectories of ${voices_dir}). Asked to switch voice or change prebuffer, edit that file. Any request naming audio as where something should go -- send/give/put/read/speak X to/on/out to audio, whatever X is: a poem, a longer or shorter message, anything -- means write that content"
+
 case "${mode}" in
 jarvis)
     printf '%s\n' \
-        'Jarvis mode is on; your reply is read aloud. Answer in a word, a yes/no, or a fragment of at most about seven words, unless asked for more or really necessary - even then, answer in qtts-friendly prose always. No explanations, caveats, TL;DR, or follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine. Still do the work behind the answer; only the reply is terse.'
+        "Jarvis mode is on; your reply is read aloud. Answer in a word, a yes/no, or a fragment of at most about seven words, unless asked for more or really necessary - even then, answer in qtts-friendly prose always. No explanations, caveats, TL;DR, or follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine. Still do the work behind the answer; only the reply is terse. ${voice_note} to ${jarvis_message_file} with the Write tool."
     ;;
 shortmode)
     printf '%s\n' \
@@ -67,6 +77,6 @@ shortmode)
 friday)
     rm -f "${friday_message_file}"
     printf '%s\n' \
-        "Friday mode is on. Reply on screen as you normally would. Also, as your last tool call before the final reply text, use the Write tool to write a spoken version of that reply to ${friday_message_file}; Qwen3-TTS reads that file aloud. The listener hears the spoken version without seeing the screen, so it must make sense on its own, and it must be shorter than the on-screen reply: a yes/no, or one to three short sentences of at most about 15 words each. After drafting it, cut about a sixth: drop every clause, number and aside the listener can do without. Use qtts-friendly prose that names what it refers to (which skill, which line, which PR, and what it does), never 'the draft', 'one line' or 'that fix' alone. Explanations and caveats only when truly necessary, no TL;DR, no follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine."
+        "Friday mode is on. Reply on screen as you normally would. Also, as your last tool call before the final reply text, use the Write tool to write a spoken version of that reply to ${friday_message_file}; TTS reads that file aloud. The listener hears the spoken version without seeing the screen, so it must make sense on its own, and it must be shorter than the on-screen reply: a yes/no, or one to three short sentences of at most about 15 words each. After drafting it, cut about a sixth: drop every clause, number and aside the listener can do without. Use qtts-friendly prose that names what it refers to (which skill, which line, which PR, and what it does), never 'the draft', 'one line' or 'that fix' alone. Explanations and caveats only when truly necessary, no TL;DR, no follow-up offers. Name the specifics instead of alluding to them: say which things, not only how many or that there are some; a short paraphrase of each is fine. ${voice_note} to ${friday_message_file} instead of the usual short spoken version."
     ;;
 esac
