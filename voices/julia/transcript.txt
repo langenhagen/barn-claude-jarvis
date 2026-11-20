@@ -1,0 +1,1 @@
+Eines der vier übrigen zentralen Konzepte der Softwareentwicklung ist der sogenannte Software Zyklus. Er beschreibt die geänderten Phasen, die während der Entwicklung und Wartung einer Software durchlaufen werden. Dazu gehören typischerweise die Anforderungsanalyse, das Systemdesign, die Implementierung, das Testen und das anschließende Ausrollen.
