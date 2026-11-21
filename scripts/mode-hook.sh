@@ -63,7 +63,7 @@ jarvisoff | shortmodeoff | fridayoff)
     ;;
 esac
 
-voice_note="Voice (voice_name) and --prebuffer (qtts_prebuffer_seconds) live in ${paths_file} -- other voices under ${voices_dir}; edit to change either. Any 'send/speak/read X to audio' request means writing X"
+voice_note="Voice (voice_name) and --prebuffer (qtts_prebuffer_seconds) live in ${config_file}, other voices under ${voices_dir}; edit ${config_file} to change either. Any 'send/speak/read X to audio' request means writing X"
 
 case "${mode}" in
 jarvis)

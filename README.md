@@ -46,6 +46,25 @@ mode's message file instead of just replying on screen.
 All hook scripts take their file paths from
 [`scripts/paths.sh`](scripts/paths.sh).
 
+## Configuration
+
+Local settings live in [`config.sh`](config.sh), which
+[`scripts/paths.sh`](scripts/paths.sh) sources. The file is git-ignored, so
+changes stay out of version control. To create it, copy the sample:
+
+```bash
+cp config.sh.sample config.sh
+```
+
+It sets:
+
+- `voice_name`: the TTS voice, a subdirectory of `voices/`. A name without a
+  matching directory falls back to `jeff`.
+- `qtts_prebuffer_seconds`: how much audio `qtts` buffers before playback.
+  Defaults to `0`.
+
+Without `config.sh`, the defaults apply.
+
 ## Requirements
 
 - [`jq`](https://jqlang.org)

@@ -1,0 +1,15 @@
+# Local settings for the barn-claude-jarvis hook scripts. Sourced by paths.sh.
+#
+# Copy this file to config.sh next to it. config.sh is not under version
+# control, so local changes stay out of the repository.
+#
+# author: andreasl
+
+# shellcheck shell=bash
+# shellcheck disable=SC2034  # SC2034: variable appears unused; paths.sh uses them
+
+# TTS voice: a subdirectory name of voices/. Unknown names fall back to jeff.
+voice_name="jeff"
+
+# qtts --prebuffer seconds. See paths.sh.
+qtts_prebuffer_seconds=0
